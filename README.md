@@ -27,7 +27,7 @@ This web application allows you to upload a JSON file, view and edit its content
 3. Start the local server:  
    ```sh 
    npm start
-4. Open your web browser and go to http://localhost:8080.
+4. Open your web browser and go to http://127.0.0.1:8080/.
 
 ### File Structure
 1. index.html: The main HTML file.
