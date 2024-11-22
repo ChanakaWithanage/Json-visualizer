@@ -1,20 +1,88 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
 }
-textarea {
-  width: 100%;
-  height: 150px;
-  margin-bottom: 10px;
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
 button {
-  padding: 10px;
-  margin-top: 10px;
-  cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 4px;
 }
-#json-tree {
-  margin-top: 20px;
-  border: 1px solid #ddd;
-  padding: 10px;
-  background: #f9f9f9;
+
+button:hover {
+    background-color: #45a049;
+}
+
+.filters {
+    margin-bottom: 20px;
+}
+
+.filters h3 {
+    margin: 0 0 10px;
+}
+
+.filter {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.filter input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.json-display {
+    background: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: monospace;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+.json-line {
+    margin-left: 20px; /* Indentation for nested levels */
+}
+
+.json-line .json-key {
+    font-weight: bold;
+    color: #333;
+}
+
+.json-line input {
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 10px;
+    width: 50%;
+}
+
+.highlight {
+    background-color: #ffff8f;
+    font-weight: bold;
 }

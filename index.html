@@ -3,15 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JSON Visualizer</title>
+  <title>JSON Viewer</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>JSON Visualizer</h1>
-  <textarea id="json-input" placeholder="Paste your JSON here"></textarea>
-  <button id="visualize-btn">Visualize</button>
-  <div id="json-tree"></div>
-  <button id="download-btn" style="display: none;">Download JSON</button>
-  <script src="script.js"></script>
+<div class="container">
+  <div class="header">
+    <button id="uploadJsonButton">Upload JSON</button>
+    <input type="file" id="uploadJsonInput" style="display: none;">
+    <button id="exportJsonButton">Export JSON</button>
+  </div>
+
+  <div class="filters">
+    <h3>Filters</h3>
+    <div class="filter">
+      <select class="attribute-name">
+        <option value="">Select Attribute</option>
+      </select>
+      <input class="attribute-value" type="text" placeholder="Value">
+    </div>
+    <div class="filter">
+      <select class="attribute-name">
+        <option value="">Select Attribute</option>
+      </select>
+      <input class="attribute-value" type="text" placeholder="Value">
+    </div>
+    <div class="filter">
+      <select class="attribute-name">
+        <option value="">Select Attribute</option>
+      </select>
+      <input class="attribute-value" type="text" placeholder="Value">
+    </div>
+    <div class="filter">
+      <select class="attribute-name">
+        <option value="">Select Attribute</option>
+      </select>
+      <input class="attribute-value" type="text" placeholder="Value">
+    </div>
+    <button id="applyFilterButton">Filter</button>
+  </div>
+
+  <h3>Editable JSON</h3>
+  <div id="matchesCount">Matches: 0</div>
+  <div id="jsonDataContainer" class="json-display"></div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
