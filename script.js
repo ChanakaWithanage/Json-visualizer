@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Populate filter dropdowns
     function populateFilterDropdowns(data) {
         const attributeNames = getAllBaseAttributeNames(data);  // Get base attribute names
-        const defaultAttributes = ['id', 'name', 'event', 'possessions'];
+        const defaultAttributes = ['id', 'name', 'events', 'posessions'];
         const dropdowns = document.querySelectorAll(".attribute-name");
 
         dropdowns.forEach((dropdown, index) => {
