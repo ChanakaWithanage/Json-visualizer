@@ -40,6 +40,22 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    document.querySelectorAll(".filter").forEach(filter => {
+        const attributeSelect = filter.querySelector(".attribute-name");
+        const valueInput = filter.querySelector(".attribute-value");
+
+        // Add input event listeners for real-time filtering
+        attributeSelect.addEventListener("change", () => {
+            const currentFilters = getCurrentFilters();
+            renderJson(jsonData, currentFilters);
+        });
+
+        valueInput.addEventListener("input", debounce(() => {
+            const currentFilters = getCurrentFilters();
+            renderJson(jsonData, currentFilters);
+        }, 300)); // 300ms debounce to prevent too frequent updates
+    });
+
     function getCurrentFilters() {
         return Array.from(document.querySelectorAll(".filter"))
             .map((filter) => ({
@@ -310,30 +326,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    applyFilterButton.addEventListener("click", () => {
-        if (!jsonData) {
-            alert("Please upload JSON data first.");
-            return;
-        }
-
-        const filters = Array.from(document.querySelectorAll(".filter")).map((filter) => ({
-            attribute: filter.querySelector(".attribute-name").value.trim(),
-            value: filter.querySelector(".attribute-value").value.trim(),
-        }));
-
-        const highlightFilters = filters.filter((filter) => filter.attribute && filter.value);
-        renderJson(jsonData, highlightFilters);
-    });
-
     clearFilterButton.addEventListener("click", () => {
         document.querySelectorAll(".attribute-value").forEach(input => input.value = "");
-        document.querySelectorAll(".attribute-name").forEach(select => {
-            select.value = select.querySelector("option").value;
-        });
         matchedElements = [];
         currentMatchIndex = -1;
         matchesCountDisplay.textContent = "Matches: 0";
-        renderJson(jsonData, []);
+        renderJson(jsonData, []); // Re-render immediately after clearing
         matchNumberInput.value = "";
     });
 });
