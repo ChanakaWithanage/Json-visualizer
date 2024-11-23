@@ -1,88 +1,243 @@
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary-color: #64748b;
+    --border-color: #e2e8f0;
+    --background-light: #f8fafc;
+    --background-dark: #f1f5f9;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --highlight-color: #fef9c3;
+    --current-match: #fef3c7;
+    --success-color: #22c55e;
+    --error-color: #ef4444;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: var(--background-dark);
+    color: var(--text-primary);
+    line-height: 1.5;
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
     background: #fff;
-    padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
 }
 
 .header {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: var(--primary-color);
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 8px 16px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+button:active {
+    transform: translateY(0);
 }
 
 .filters {
-    margin-bottom: 20px;
+    background-color: var(--background-light);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border-color);
 }
 
 .filters h3 {
-    margin: 0 0 10px;
+    margin: 0 0 16px;
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .filter {
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.filter select,
+.filter input {
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.filter select {
+    min-width: 200px;
+    background-color: white;
 }
 
 .filter input {
     flex: 1;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+}
+
+.filter select:focus,
+.filter input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+#matchesCount {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.navigation-controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    align-items: center;
+}
+
+#matchNumberInput {
+    width: 80px;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
 }
 
 .json-display {
-    background: #f9f9f9;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-family: monospace;
+    background: white;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-family: 'Fira Code', 'Consolas', monospace;
     overflow-x: auto;
     white-space: pre-wrap;
     line-height: 1.6;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.json-display::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.json-display::-webkit-scrollbar-track {
+    background: var(--background-light);
+    border-radius: 4px;
+}
+
+.json-display::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 4px;
 }
 
 .json-line {
-    margin-left: 20px; /* Indentation for nested levels */
+    margin-left: 24px;
+    padding: 2px 0;
 }
 
-.json-line .json-key {
-    font-weight: bold;
-    color: #333;
+.json-key {
+    color: var(--primary-color);
+    font-weight: 500;
 }
 
 .json-line input {
-    padding: 3px;
-    border: 1px solid #ccc;
+    padding: 4px 8px;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
-    margin-left: 10px;
-    width: 50%;
+    margin-left: 8px;
+    width: calc(100% - 200px);
+    font-family: inherit;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.json-line input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .highlight {
-    background-color: #ffff8f;
-    font-weight: bold;
+    background-color: var(--highlight-color);
+    border-radius: 4px;
+}
+
+.current-match {
+    background-color: var(--current-match);
+    border-left: 3px solid var(--primary-color);
+}
+
+.json-nested {
+    margin-left: 12px;
+    padding-left: 12px;
+    border-left: 1px dashed var(--border-color);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 16px;
+    }
+    
+    .filter {
+        flex-direction: column;
+    }
+    
+    .filter select {
+        width: 100%;
+    }
+    
+    .json-line input {
+        width: calc(100% - 40px);
+    }
+}
+
+/* Optional: Add a loading state for buttons */
+button.loading {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+/* Optional: Add error states for inputs */
+.filter input.error {
+    border-color: var(--error-color);
+    background-color: #fef2f2;
+}
+
+/* Optional: Add success states for inputs */
+.filter input.success {
+    border-color: var(--success-color);
+    background-color: #f0fdf4;
 }
