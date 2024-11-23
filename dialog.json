@@ -1,0 +1,393 @@
+{
+    "dialogs": [
+        {
+            "id": "meet_bird_without_cheese",
+            "name": "bird",
+            "events": [
+                "!initially_met_bird"
+            ],
+            "posessions": [
+                "!cheese"
+            ],
+            "language": {
+                "english": "Hi.",
+                "spanish": "Hola."
+            },
+            "actions": {
+                "events_changed_on_enter": [
+                    "initially_met_bird"
+                ],
+                "items_changed_on_enter": [],
+                "events_changed_on_exit": [],
+                "items_changed_on_exit": [],
+                "next_id": "bird_without_cheese"
+            }
+        },
+        {
+            "id": "meet_bird_with_cheese",
+            "name": "bird",
+            "events": [
+                "!initially_met_bird"
+            ],
+            "posessions": [
+                "cheese"
+            ],
+            "language": {
+                "english": "Hi! Oh wow, do I smell cheese?",
+                "spanish": "Hola! Oh wow, ¿huelo queso?"
+            },
+            "actions": {
+                "events_changed_on_enter": [
+                    "initially_met_bird"
+                ],
+                "items_changed_on_enter": [],
+                "events_changed_on_exit": [],
+                "items_changed_on_exit": [],
+                "next_id": "bird_with_cheese_choice"
+            }
+        },
+        {
+            "id": "bird_without_cheese",
+            "name": "bird",
+            "events": [
+                "initially_met_bird",
+                "!you_gave_bird_cheese"
+            ],
+            "posessions": [
+                "!cheese"
+            ],
+            "language": {
+                "english": "Can you find some cheese for me?",
+                "spanish": "¿Puedes buscarme queso?"
+            },
+            "actions": {
+                "events_changed_on_enter": [],
+                "items_changed_on_enter": [],
+                "events_changed_on_exit": [],
+                "items_changed_on_exit": [],
+                "next_id": ""
+            }
+        },
+        {
+            "id": "bird_with_cheese",
+            "name": "bird",
+            "events": [
+                "initially_met_bird",
+                "!you_gave_bird_cheese",
+                "!bird_is_angry"
+            ],
+            "posessions": [
+                "cheese"
+            ],
+            "language": {
+                "english": "You found cheese. Can I have it?",
+                "spanish": "¿Me das el queso?"
+            },
+            "actions": {
+                "events_changed_on_enter": [],
+                "items_changed_on_enter": [],
+                "events_changed_on_exit": [],
+                "items_changed_on_exit": [],
+                "next_id": "bird_with_cheese_choice"
+            }
+        },
+        {
+            "id": "bird_with_cheese_choice",
+            "name": "player",
+            "events": [
+                "initially_met_bird"
+            ],
+            "posessions": [
+                "cheese"
+            ],
+            "language": {
+                "english": "Give cheese to bird?",
+                "spanish": "¿Dale queso al pájaro?"
+            },
+            "choices": [
+                {
+                    "choice": "yes",
+                    "dialog": {
+                        "language": {
+                            "english": "Sure",
+                            "spanish": "Claro"
+                        },
+                        "actions": {
+                            "events_changed_on_enter": [],
+                            "items_changed_on_enter": [],
+                            "events_changed_on_exit": [
+                                "you_gave_bird_cheese"
+                            ],
+                            "items_changed_on_exit": [
+                                "!cheese"
+                            ],
+                            "next_id": "bird_thanks_you_for_cheese"
+                        }
+                    }
+                },
+                {
+                    "choice": "no",
+                    "dialog": {
+                        "language": {
+                            "english": "No",
+                            "spanish": "No"
+                        },
+                        "actions": {
+                            "events_changed_on_enter": [],
+                            "items_changed_on_enter": [],
+                            "events_changed_on_exit": [
+                                "bird_is_angry"
+                            ],
+                            "items_changed_on_exit": [],
+                            "next_id": "bird_hates_you_for_withholding_cheese"
+                        }
+                    }
+                }
+            ],
+            "actions": {
+                "events_changed_on_enter": [],
+                "items_changed_on_enter": [],
+                "events_changed_on_exit": [],
+                "items_changed_on_exit": [],
+                "next_id": ""
+            }
+        },
+        {
+            "id": "bird_thanks_you_for_cheese",
+            "name": "bird",
+            "events": [
+                "initially_met_bird",
+                "you_gave_bird_cheese"
+            ],
+            "posessions": [],
+            "language": {
+                "english": "Oh thank you so much. I've been craving cheese",
+                "spanish": "Oh mil gracias. Tenia atonjo de queso."
+            },
+            "actions": {
+                "events_changed_on_enter": [],
+                "items_changed_on_enter": [],
+                "events_changed_on_exit": [],
+                "items_changed_on_exit": [],
+                "next_id": ""
+            }
+        },
+        {
+            "id": "bird_hates_you_for_withholding_cheese",
+            "name": "bird",
+            "events": [
+                "none"
+            ],
+            "posessions": [],
+            "language": {
+                "english": "I hate you. I just wanted some cheese.",
+                "spanish": "Me caes mal. Solo queria queso"
+            },
+            "actions": {
+                "events_changed_on_enter": [],
+                "items_changed_on_enter": [],
+                "events_changed_on_exit": [],
+                "items_changed_on_exit": [],
+                "next_id": ""
+            }
+        },
+        {
+            "id": "bird_is_angry",
+            "name": "bird",
+            "events": [
+                "bird_is_angry"
+            ],
+            "posessions": [
+                "cheese"
+            ],
+            "language": {
+                "english": "Keep your stinky cheese and go away",
+                "spanish": "Ya vete con tu queso apestoso"
+            },
+            "actions": {
+                "events_changed_on_enter": [],
+                "events_changed_on_exit": [],
+                "items_changed_on_enter": [],
+                "items_changed_on_exit": [],
+                "next_id": ""
+            }
+        },
+        {
+            "id": "meet_pig",
+            "name": "pig",
+            "events": [
+                "!met_pig"
+            ],
+            "posessions": [],
+            "language": {
+                "english": "Do I smell something good?",
+                "spanish": "¿Huelo algo rico?"
+            },
+            "actions": {
+                "events_changed_on_enter": [],
+                "items_changed_on_enter": [],
+                "events_changed_on_exit": [
+                    "met_pig"
+                ],
+                "items_changed_on_exit": [],
+                "next_id": ""
+            }
+        },
+        {
+            "id": "pig_grunts",
+            "name": "pig",
+            "events": [
+                "met_pig",
+                "!you_gave_bird_cheese"
+            ],
+            "posessions": [],
+            "language": {
+                "english": "Oink, oink.",
+                "spanish": "Oink, oink."
+            },
+            "actions": {
+                "events_changed_on_enter": [],
+                "items_changed_on_enter": [],
+                "events_changed_on_exit": [
+                    "met_pig"
+                ],
+                "items_changed_on_exit": [],
+                "next_id": ""
+            }
+        },
+        {
+            "id": "pig_smells_something",
+            "name": "pig",
+            "events": [
+                "met_pig",
+                "you_gave_bird_cheese"
+            ],
+            "posessions": [],
+            "language": {
+                "english": "You smell like cheese. Do you have some?",
+                "spanish": "Hueles a queso. ¿Tienes algo?"
+            },
+            "actions": {
+                "events_changed_on_enter": [],
+                "events_changed_on_exit": [],
+                "items_changed_on_enter": [],
+                "items_changed_on_exit": [],
+                "next_id": "pig_smells_cheese_and_prompts_choice"
+            }
+        },
+        {
+            "id": "pig_smells_cheese_and_prompts_choice",
+            "name": "player",
+            "events": [],
+            "posessions": [],
+            "language": {
+                "english": "What do you tell the pig?",
+                "spanish": "¿Qué le dices al cerdo?"
+            },
+            "choices": [
+                {
+                    "choice": "yes",
+                    "dialog": {
+                        "language": {
+                            "english": "No, I gave it to the bird",
+                            "spanish": "No, se lo di al pájaro."
+                        },
+                        "actions": {
+                            "events_changed_on_enter": [],
+                            "items_changed_on_enter": [],
+                            "events_changed_on_exit": [
+                                ""
+                            ],
+                            "items_changed_on_exit": [
+                                ""
+                            ],
+                            "next_id": "pig_says_lucky_bird"
+                        }
+                    }
+                },
+                {
+                    "choice": "no",
+                    "dialog": {
+                        "language": {
+                            "english": "What bird?",
+                            "spanish": "¿Qué pájaro?"
+                        },
+                        "actions": {
+                            "events_changed_on_enter": [],
+                            "items_changed_on_enter": [],
+                            "events_changed_on_exit": [
+                                ""
+                            ],
+                            "items_changed_on_exit": [],
+                            "next_id": "pig_calls_you_a_liar"
+                        }
+                    }
+                }
+            ],
+            "actions": {
+                "events_changed_on_enter": [],
+                "items_changed_on_enter": [],
+                "events_changed_on_exit": [],
+                "items_changed_on_exit": [],
+                "next_id": ""
+            }
+        },
+        {
+            "id": "pig_says_lucky_bird",
+            "name": "pig",
+            "events": [
+                "none"
+            ],
+            "posessions": [],
+            "language": {
+                "english": "Lucky bird!",
+                "spanish": "¡Qué suerte tiene el pájaro!"
+            },
+            "actions": {
+                "events_changed_on_enter": [],
+                "items_changed_on_enter": [],
+                "events_changed_on_exit": [],
+                "items_changed_on_exit": [],
+                "next_id": ""
+            }
+        },
+        {
+            "id": "pig_calls_you_a_liar",
+            "name": "pig",
+            "events": [
+                "none"
+            ],
+            "posessions": [],
+            "language": {
+                "english": "Liar!\n\nI can smell it over there by the bird.",
+                "spanish": "¡Mentiroso!\n\nLo huelo por ahí cerca del pájaro."
+            },
+            "actions": {
+                "events_changed_on_enter": [],
+                "items_changed_on_enter": [],
+                "events_changed_on_exit": [],
+                "items_changed_on_exit": [],
+                "next_id": ""
+            }
+        },
+        {
+            "id": "another_pig_oink",
+            "name": "pig",
+            "events": [
+                "met_pig"
+            ],
+            "posessions": [],
+            "language": {
+                "english": "Hm...",
+                "spanish": "Mmm..."
+            },
+            "actions": {
+                "events_changed_on_enter": [],
+                "items_changed_on_enter": [],
+                "events_changed_on_exit": [],
+                "items_changed_on_exit": [],
+                "next_id": ""
+            }
+        }
+    ]
+}
